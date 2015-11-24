@@ -25,6 +25,9 @@ The code for this can be found in [parse.py](/blob/master/parse.py).
 
 Easy. The swear_set is derived from this scene in the canonical cinematic work on profanity,
  ["South Park: Bigger, Longer, and Uncut":](https://www.youtube.com/watch?v=5eT0nZUROQ8) (specifically starting at the 00:47 mark).
+=======
+Easy. The swear_set is derived from this scene in the canonical cinematic work on profanity, ["South Park: Bigger, Longer, and Uncut"](https://www.youtube.com/watch?v=5eT0nZUROQ8) (specifically starting at the 00:47 mark).
+
 
 ## Results 
 
@@ -47,7 +50,7 @@ Find the graphing code in [swearmap.ipynb](/blob/master/swearmap.ipynb).
 My process as outlined here has several potential issues:
 * If the listener receives data faster than it can store it, it will fall behind the stream and disconnect. I ran into this issue several times before getting a volume of data I was satisfied with. The listener as currently built has no control for this and it is a subject for future development. 
 * Limited sample size. The dataset contained over 50k tweets but there were still a large number of states for which no data was collected. On the positive side, the proportions of tweets containing profanity was fairly consistent among the states with decent samples, typically in the 2-5% range. 
-* Limited definition of profanity. I limited my definition of profanity to this clip from "South Park: Bigger, Longer, and Uncut":](https://www.youtube.com/watch?v=5eT0nZUROQ8). Furthermore, I assumed all instances of profanity were correctly spelled and properly spaced, by far the most naive assumption ever made about Twitter.
+* Limited definition of profanity. I limited my definition of profanity to this clip from ["South Park: Bigger, Longer, and Uncut"](https://www.youtube.com/watch?v=5eT0nZUROQ8). Furthermore, I assumed all instances of profanity were correctly spelled and properly spaced, by far the most naive assumption ever made about Twitter.
 
 ## Conclusion
 
