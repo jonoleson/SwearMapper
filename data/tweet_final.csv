@@ -1,0 +1,28 @@
+state,tweet_count,has_swears_sum,percent_swears,code
+Michigan,722.0,56.0,7.76,MI
+New Jersey,572.0,35.0,6.12,NJ
+New Mexico,70.0,4.0,5.71,NM
+Georgia,1638.0,88.0,5.37,GA
+District of Columbia,963.0,49.0,5.09,DC
+Illinois,2381.0,105.0,4.41,IL
+Texas,9353.0,393.0,4.2,TX
+Pennsylvania,2681.0,111.0,4.14,PA
+Ohio,1761.0,70.0,3.98,OH
+Oklahoma,229.0,9.0,3.93,OK
+Mississippi,289.0,11.0,3.81,MS
+New York,5275.0,189.0,3.58,NY
+North Carolina,1537.0,55.0,3.58,NC
+California,10190.0,363.0,3.56,CA
+Maryland,283.0,10.0,3.53,MD
+Virginia,1547.0,51.0,3.3,VA
+Arkansas,153.0,5.0,3.27,AR
+Arizona,1581.0,51.0,3.23,AZ
+Colorado,869.0,27.0,3.11,CO
+South Carolina,694.0,19.0,2.74,SC
+Tennessee,1482.0,39.0,2.63,TN
+Indiana,1324.0,31.0,2.34,IN
+Washington,795.0,17.0,2.14,WA
+Connecticut,145.0,3.0,2.07,CT
+Massachusetts,929.0,14.0,1.51,MA
+Kentucky,74.0,1.0,1.35,KY
+Florida,169.0,1.0,0.59,FL
