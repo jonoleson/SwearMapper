@@ -5,14 +5,15 @@ import numpy as np
 import geocoder
 
 
-def parse_tweets(data_path):
+def parse_tweets(data_path, test=False):
 	'''
 	Reads the data txt file and appends each tweet's data into a list
 	if it contains the necessary geographic tags.
 	'''
+	count 			 = 0
 	tweets_data_path = data_path
-	tweets_data = []
-	tweets_file = open(tweets_data_path, "r")
+	tweets_data 	 = []
+	tweets_file 	 = open(tweets_data_path, "r")
 	for line in tweets_file:
 	    try:
 	        tweet = json.loads(line)
@@ -21,6 +22,10 @@ def parse_tweets(data_path):
         			if tweet['place']['bounding_box'] is not None:
         				if tweet['place']['bounding_box']['coordinates'] is not None:
     						tweets_data.append(tweet)
+    						if test==True:
+    							count += 1
+    							if count > 10:
+    								break
 	    except:
 	        continue
 	return tweets_data
@@ -33,7 +38,7 @@ def build_df(tweets_data):
 	# Fill the dataframe with the tweet text, place name, place type, and coordinates
 	tweets['text']   = map(lambda tweet: tweet['text'].lower(), tweets_data)
 	tweets['coords'] = map(lambda tweet: tweet['place']['bounding_box']['coordinates'], \
-						   tweets_data)
+						   tweets_data) 
 	return tweets
 
 
@@ -50,9 +55,9 @@ def get_state(coordinate):
 	and setting it as an Environment Variable like so:
 	$ export MAPBOX_ACCESS_TOKEN=<Secret Access Token>
 	'''
-    lng, lat = zip(*coordinate[0])
-    g = geocoder.mapbox([np.mean(lat), np.mean(lng)], method='reverse')
-    return g.state
+	lng, lat = zip(*coordinate[0])
+	g = geocoder.mapbox([np.mean(lat), np.mean(lng)], method='reverse')
+	return g.state
 
 
 def get_state_column(tweets):
@@ -100,7 +105,7 @@ def get_swear_sums(tweets):
 	Returns a new dataframe with the number of tweets containing swears 
 	grouped by state
 	'''
-	sum_df = df.groupby('state').sum()
+	sum_df = tweets.groupby('state').sum()
 	return sum_df
 
 
@@ -121,7 +126,7 @@ def get_percentage_column(tweets):
 	# Adds a column for the percentage of each state's tweets containing swearing
 	tweets['percent_swears'] = 100*tweets['has_swears_sum'] / \
 						       tweets['tweet_count'].astype(float)
-    return tweets
+	return tweets
 
 def filter_states(tweets):
 	# Filters out the observations of non-US states that slipped in to the dataset
@@ -144,17 +149,25 @@ def group_by_state(tweets):
 	tweets = tweets[['state', 'tweet_count', 'has_swears_sum', 'percent_swears']]
 	return tweets
 
-def add_state_codes(tweets):
-	# Add state codes to dataframe (To work with Plotly visualization)
-	tweets['code'] = ['MI', 'NJ', 'NM', 'GA', 'DC', 'IL', 
-              		  'TX', 'PA', 'OH', 'OK', 'MS', 'NY', 
-              		  'NC', 'CA', 'MD', 'VA', 'AK', 'AZ', 
-              		  'CO', 'SC', 'TN', 'IN', 'WA', 'CT', 
-              		  'MA','KY', 'FL']
+def add_state_codes(tweets, test=False):
+	'''
+	Add state codes to dataframe (To work with Plotly visualization)
+	NOTE: This array will vary depending on the sample of tweets gathered 
+	during the streaming period. The tweets I gathered happened to be from 
+	these states, and the dataframe sorted by swear percentage happened
+	to be in this order. Automating this stage is a subject for future
+	development.
+	'''
+	if test == False:
+		tweets['code'] = ['MI', 'NJ', 'NM', 'GA', 'DC', 'IL', 
+	              		  'TX', 'PA', 'OH', 'OK', 'MS', 'NY', 
+	              		  'NC', 'CA', 'MD', 'VA', 'AR', 'AZ', 
+	              		  'CO', 'SC', 'TN', 'IN', 'WA', 'CT', 
+	              		  'MA','KY', 'FL']
 	return tweets
 
 if __name__=='__main__':
-	tweets_data = parse_tweets('data/data.txt')
+	tweets_data = parse_tweets('data/data.txt', test=True)
 	tweets      = build_df(tweets_data)
 	tweets      = clean_text(tweets)
 	tweets      = get_state_column(tweets) 
@@ -166,8 +179,8 @@ if __name__=='__main__':
 	tweets      = get_percentage_column(tweets)
 	tweets      = filter_states(tweets)
 	tweets      = group_by_state(tweets)
-	tweets 		= add_state_codes(tweets)
-	tweets.to_csv('data/tweet_final.csv', index=False, encoding='utf-8')
+	tweets 		= add_state_codes(tweets, test=True)
+	tweets.to_csv('data/tweet_test.csv', index=False, encoding='utf-8')
 
 
 

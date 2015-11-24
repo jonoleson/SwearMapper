@@ -23,7 +23,8 @@ The code for this can be found in [parse.py](/blob/master/parse.py).
 
 ### What is a Swear?
 
-Easy. The swear_set is derived from this scene in the canonical cinematic work on profanity, ["South Park: Bigger, Longer, and Uncut":](https://www.youtube.com/watch?v=5eT0nZUROQ8) (specifically starting at the 00:47 mark).
+Easy. The swear_set is derived from this scene in the canonical cinematic work on profanity,
+ ["South Park: Bigger, Longer, and Uncut":](https://www.youtube.com/watch?v=5eT0nZUROQ8) (specifically starting at the 00:47 mark).
 
 ## Results 
 
