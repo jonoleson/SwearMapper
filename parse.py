@@ -179,7 +179,7 @@ if __name__=='__main__':
 	tweets      = get_percentage_column(tweets)
 	tweets      = filter_states(tweets)
 	tweets      = group_by_state(tweets)
-	tweets 		= add_state_codes(tweets, test=True)
+	tweets      = add_state_codes(tweets, test=True)
 	tweets.to_csv('data/tweet_test.csv', index=False, encoding='utf-8')
 
 
