@@ -12,14 +12,14 @@ In building the listener, I mostly followed [this tutorial](http://adilmoujahid.
 
 I ran the listener for roughly 2 hours, piping the output into a txt file with the following command in the terminal: `$ python listener.py > data.txt`
 
-The code for this can be found in [listener.py](/blob/master/listener.py).
+The code for this can be found in [listener.py](/listener.py).
 
 
 ## Parsing the Data
 
 Parsing the data involved loading the JSON of each Tweet's data from the data.txt file, then feeding the data into a Pandas dataframe. Each tweet had coordinate data, which I reverse-geocoded to extract the state each tweet was sent from. To use the Mapbox API I used during this step, you have to set a Mapbox Access Token as an environment variable in the directory where you're running the parser, like so: `$ export MAPBOX_ACCESS_TOKEN=<Secret Access Token>`. On ordinary hardware, the reverse geocoding step can take up to 2 hours with a dataset of roughly 50k tweets. 
 
-The code for this can be found in [parse.py](/blob/master/parse.py).
+The code for this can be found in [parse.py](/parse.py).
 
 ### What is a Swear?
 
@@ -40,7 +40,7 @@ The top 5 swear-iest states on Twitter were:
 
 My graphed results can be found [here](https://plot.ly/~jonoleson/15/swearmapper-cursing-on-twitter-by-state-hover-for-breakdown/), I used Plotly's Pandas API. The map must be generated from within an iPython Notebook. For instructions on getting set up with Plotly's API, see [here](https://plot.ly/python/getting-started/).  
 
-Find the graphing code in [swearmap.ipynb](/blob/master/swearmap.ipynb).
+Find the graphing code in [swearmap.ipynb](/swearmap.ipynb).
 
 ## Caveats
 
