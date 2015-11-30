@@ -10,7 +10,7 @@ def parse_tweets(data_path, test=False):
 	Reads the data txt file and appends each tweet's data into a list
 	if it contains the necessary geographic tags.
 	'''
-	count 			 = 0
+	count 		 = 0
 	tweets_data_path = data_path
 	tweets_data 	 = []
 	tweets_file 	 = open(tweets_data_path, "r")
