@@ -95,7 +95,7 @@ def get_swear_column(tweets):
 
 def get_tweet_counts(tweets):
 	# Returns a new dataframe with the tweet counts grouped by state
-	count_df 				= tweets.groupby('state').count()
+	count_df 		= tweets.groupby('state').count()
 	count_df['tweet_count'] = count_df['text']
 	return count_df
 
